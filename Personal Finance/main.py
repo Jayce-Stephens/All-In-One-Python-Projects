@@ -12,3 +12,13 @@ def main():
     else:
         print("You are breaking even this month.")
 
+    budget = float(input("Enter your desired monthly savings goal: "))
+    if savings >= budget:
+        print("You are on track to meet your savings goal!")
+    else:
+        print(f"You need to save an additional ${budget - savings:.2f} to meet your goal.")
+
+
+if __name__ == "__main__":
+    main()
+

@@ -13,7 +13,10 @@ def main():
         path = input("Enter the path to your photo directory: ")
         date = input("Enter the date the photos were taken (YYYY-MM-DD): ")
         location = input("Enter the location where the photos were taken: ")
-        directory[date] = [path]
+        if date in directory:
+            directory[date].append(path)
+        else:
+            directory[date] = [path]
 
     print(f"Organizing photos in directory: {path}")
     print("Photos organized successfully!")

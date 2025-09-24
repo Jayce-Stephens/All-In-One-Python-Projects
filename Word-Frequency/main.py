@@ -15,6 +15,5 @@ def find_words_frequency(file_path):
         count = words.count(word)
         print(f"{word}: {count}")
 
-
 if __name__ == "__main__":
     main()

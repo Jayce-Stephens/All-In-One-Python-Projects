@@ -10,6 +10,14 @@ def main():
     print("Here are some recommendations for your trip:")
     for i, c in enumerate(recommendations):
         print(f"{i + 1}: {recommendations[i]}")
+
+    usr_acc = input("Would you like to see accommodation options? (y/n): ")
+    if usr_acc.lower() == 'y':
+        accommodations = accommodation_options(destination)
+        print("Here are some accommodation options:")
+        for i, a in enumerate(accommodations):
+            print(f"{i + 1}: {accommodations[i]}")
+
         
  
 
@@ -28,6 +36,18 @@ def travel_recomendations(destination):
 
     }
     return recommendations.get(destination, ["No recommendations available for this destination."])
+
+def accommodation_options(destination):
+    options = {
+        "Paris": ["Hotel Le Meurice", "Hotel Ritz Paris", "Hotel Plaza Athenee"],
+        "New York": ["The Plaza", "The St. Regis New York", "The Langham"],
+        "Tokyo": ["The Ritz-Carlton Tokyo", "Park Hyatt Tokyo", "Mandarin Oriental Tokyo"],
+        "Atlanta": ["The Ritz-Carlton Atlanta", "Four Seasons Hotel Atlanta", "Loews Atlanta Hotel"],
+        "Los Angeles": ["The Beverly Hills Hotel", "The Peninsula Beverly Hills", "Waldorf Astoria Beverly Hills"],
+        "London": ["The Savoy", "The Langham London", "Claridge's"],
+        "Gotham": ["The Iceberg Lounge", "The Narrows Hotel", "Arkham Asylum"]
+    }
+    return options.get(destination, ["No accommodation options available for this destination."])
 
 if __name__ == "__main__":
     main()

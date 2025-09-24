@@ -16,19 +16,19 @@ def main():
         directory[date] = [path]
 
     print(f"Organizing photos in directory: {path}")
-    organize_photos(path)
     print("Photos organized successfully!")
     
 
-    for date, photos in directory.items():
-        print(f"Date: {date}")
-        print(f"{date} Photos: {photos}")
+    time = input("Enter a date (YYYY-MM-DD) to view photos taken on that day: ")
+    photos = usrCall(time)
+    print(f"Photos taken on {time}: {photos}")
      
-
-def organize_photos(path, date=None, location=None):
-    return 
     
-
+def usrCall(time):
+    if time in directory:
+        return directory[time]
+    else:
+        return "No photos found for this date."
 
 
 if __name__ == "__main__":

@@ -25,12 +25,13 @@ def main():
     current_location = input("Enter your current location: ")
     destination = input("Enter your travel destination: ")
     travel_mode = input("Enter your preferred mode of travel (e.g., train, bus, bike): ")
-    accommodation_type = input("Enter your preferred accommodation type (e.g., eco-lodge, hostel, hotel): ")
+
 
     dist = distance(current_location, destination)
     print(distance(current_location, destination))
     print("Estimated CO2 emissions for your trip: ", calculate_emissions(dist[1], travel_mode), "kg CO2")
-    eco_activities =""
+    suggest_eco_activities(calculate_emissions(dist[1], travel_mode))
+
 
 
 def calculate_emissions(distance_km, travel_mode):
@@ -40,6 +41,20 @@ def calculate_emissions(distance_km, travel_mode):
         print("Unknown travel mode. Please choose from car, bus, train, bike, or plane.")
     return distance_km * rate
 
+def suggest_eco_activities(emission_kg):
+    print("To offset your trip's carbon footprint, consider the following eco-friendly activities:")
+
+    if emission_kg <= 0:
+        print("No emissions to offset!")
+        return
+    else:
+        for activity, count in ECO_ACTIVITIES.items():
+            hours_needed = emission_kg/count # finds the number of hours needed to offset the emissions
+
+
+            print(f"- {activity}: {hours_needed:.2f} hours needed to offset your CO2 emissions.")
+
+
 def distance(current_location, destination):
     
     geolocator = Nominatim(user_agent="sustainable_travel_planner")
@@ -48,7 +63,7 @@ def distance(current_location, destination):
 
     coor1 = (loc1.latitude, loc1.longitude)
     coor2 = (loc2.latitude, loc2.longitude)
-    return ("Distance: ", geodesic(coor1, coor2).km, "km") #function of geopy that returns the distance between two coordinates
+    return "Distance: ", geodesic(coor1, coor2).km, "km" #function of geopy that returns the distance between two coordinates
 
 
 if __name__ == "__main__":

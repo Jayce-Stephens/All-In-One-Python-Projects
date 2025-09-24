@@ -11,6 +11,14 @@ EMISSION_RATES = {
     "bike": 0.0,
     "plane": 0.255
 }
+ECO_ACTIVITIES = {
+    "planting trees": 0.5,  # kg CO2 offset per tree
+    "beach cleanup": 2.0,  # kg CO2 offset per hour
+    "wildlife conservation": 1.5,  # kg CO2 offset per hour
+    "community gardening": 1.0,  # kg CO2 offset per hour
+    "recycling programs": 0.8,  # kg CO2 offset per hour
+    "sustainable farming": 1.2  # kg CO2 offset per hour
+}
 
 def main():
     print("Let's plan your eco-friendly trip!")
@@ -31,6 +39,7 @@ def calculate_emissions(distance_km, travel_mode):
     if rate is None:
         print("Unknown travel mode. Please choose from car, bus, train, bike, or plane.")
     return distance_km * rate
+
 def distance(current_location, destination):
     
     geolocator = Nominatim(user_agent="sustainable_travel_planner")
